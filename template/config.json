@@ -1,0 +1,9 @@
+{
+  "inputDir": "_files",
+  "recursive": true,
+  "paging": 10,
+  "output": "_site",
+  "thumb_width": 300,
+  "thumb_height": 300,
+  "strip_exif": false
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>imaginaria example site</title>
+    <meta name="description" content="imaginaria example site">
+    <meta name="author" content="Matias Arriola">
+
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    {% for file in videos %}
+      <img src="{{file.thumb.path}}"/>
+      <video controls>
+        <source src="{{file.filename}}" type="video/webm">
+      </video>
+    {% endfor %}
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

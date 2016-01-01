@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>imaginaria example site</title>
+    <meta name="description" content="imaginaria example site">
+    <meta name="author" content="Matias Arriola">
+
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    {% for file in files %}
+    <a href="{{ file.filename }}">
+      <img src="{{ file.thumb.path }}"/>
+    </a>
+    {% endfor %}
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
