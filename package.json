@@ -53,9 +53,15 @@
     "doctoc": "*",
     "eslint": "*",
     "isparta": "*",
+    "proxyquire": "^1.7.3",
     "rimraf": "*",
+    "sinon": "^1.17.2",
     "tap-spec": "*",
     "tape": "*",
     "watch": "*"
+  },
+  "dependencies": {
+    "es6-promisify": "^3.0.0",
+    "glob": "^6.0.2"
   }
 }

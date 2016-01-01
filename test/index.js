@@ -1,7 +1,5 @@
-import test from "tape"
-import imaginaria from "../src"
+import test from "tape";
 
-test("imaginaria", (t) => {
-  t.plan(1)
-  t.equal(true, imaginaria(), "return true")
-})
+process.chdir('./template');
+
+require('./fetcher');
