@@ -4,3 +4,4 @@ process.chdir('./template');
 
 require('./fetcher');
 require('./logger');
+require('./config');
