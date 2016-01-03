@@ -5,3 +5,9 @@
 export default function () {
   return true
 }
+
+var coreContext = {
+  images: [],
+  videos: [],
+  files:[] //images + videos
+};

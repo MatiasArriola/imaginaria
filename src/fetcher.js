@@ -2,7 +2,7 @@
 import promisify from 'es6-promisify';
 import path from 'path';
 const glob = promisify( require("glob") );
-
+import config from './config';
 
 export const formats = {
   image: ['jpg'],
@@ -12,8 +12,11 @@ export const formats = {
 
 const specialFiles = ['config.json'];
 
-var _fetchByType = function(type, baseDir){
-  return glob( path.join(baseDir || '', `**/*.+(${ formats[type].join("|") })`) , {});
+var _fetchByType = function(type, baseDir, options){
+  options = Object.assign({
+    ignore: `${config.output}/**/*`
+  }, options);
+  return glob( path.join(baseDir || '', `**/*.+(${ formats[type].join("|") })`) , options);
 };
 
 export function fetchImages(baseDir){

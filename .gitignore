@@ -6,4 +6,3 @@ dist
 tmp
 coverage
 npm-debug.log
-template/_site

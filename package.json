@@ -7,6 +7,10 @@
     "bin/",
     "dist/"
   ],
+  "preferGlobal": true,
+  "bin": {
+    "imaginaria": "bin/index.js"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src test",
@@ -61,8 +65,13 @@
     "watch": "*"
   },
   "dependencies": {
+    "easyimage": "^2.1.0",
     "es6-promisify": "^3.0.0",
+    "exif": "^0.4.0",
+    "fluent-ffmpeg": "^2.0.1",
+    "fs-extra": "^0.26.3",
     "glob": "^6.0.2",
+    "liquid-node": "^2.6.1",
     "winston": "^2.1.1"
   }
 }
