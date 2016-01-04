@@ -33,23 +33,50 @@
 </p>
 
 <p align="center"><big>
-Generate static sites from images and videos easily with optimizations by default.
+static site generator based on images and videos
 </big></p>
 
+**Beta Alert!** If you need something robust this is not for you.
+
+## Dependencies
+
+Needs [ImageMagick](http://www.imagemagick.org/script/index.php) and [FFmpeg](https://www.ffmpeg.org/).
 
 ## Install
 
 ```sh
-npm i -D imaginaria
+npm i -g imaginaria
 ```
 
 ## Usage
 
-```js
-import imaginaria from "imaginaria"
-
-imaginaria() // true
+```sh
+imaginaria --help
+imaginaria init myNewSite && cd myNewSite
+# put some images into _files
+imaginaria build
+imaginaria serve
 ```
+
+## Templating
+
+[liquid](http://liquidmarkup.org/) is the default templating language, using [liquid-node](https://github.com/sirlantis/liquid-node).
+
+*TODO: Variables available*
+
+    files: []
+    images: []
+    videos: []
+
+## Motivation
+This project is born from the need to automate the process of sharing my Android Camera gallery as a webpage. That includes things like image and video optimization, access to metadata/gps info and html generation.
+
+## Roadmap
+
+* Paging support
+* Album support
+* Make ImageMagick and ffmpeg optional
+* Tune video compression (takes too long, bad outcome)
 
 ## License
 
