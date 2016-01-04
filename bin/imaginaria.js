@@ -9,6 +9,7 @@ program
 program
   .command('init <dir>')
   .option('-f, --force', 'inits even if the target dir already exists')
+  .option('-e, --example', 'include example files')
   .description('inits a default site template in the specified directory')
   .action(function(dir, options){
     console.log(options.force);

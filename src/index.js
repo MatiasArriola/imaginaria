@@ -66,7 +66,14 @@ export function init(dir, options){
       throw new Error(`The directory ${dir} already exists. --force to override`);
     }
   }
-  return fsCopy(path.join(__dirname, '../template'), dir);
+  fs.emptyDirSync(dir);
+  fsCopy(path.join(__dirname, '../template'), dir).then(() => {
+    fs.removeSync(path.join(dir, config.output));
+    if(!options.example){
+      fs.emptyDirSync(path.join(dir, config.filesdir));
+    }
+    return Promise.resolve();
+  });
 }
 
 export function serve(options){
