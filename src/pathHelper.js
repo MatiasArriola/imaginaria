@@ -9,3 +9,10 @@ export function toOutput(filename, subfolder){
   }
   return path.join(config.output, subfolder, f);
 }
+
+export function withoutOutputDir(filename){
+  if(filename.startsWith(config.output + path.sep)){
+    return filename.replace(config.output + path.sep, '');
+  }
+  return filename;
+}
