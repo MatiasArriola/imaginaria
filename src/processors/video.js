@@ -1,6 +1,20 @@
+import path from 'path';
 import FFmpeg from 'fluent-ffmpeg';
 
-export function compress(filename, dest){
+import { toOutput } from '../pathHelper';
+import config from '../config';
+
+export default function all(filename){
+  return Promise.all([compress(filename), thumb(filename)]).then((res) => {
+    return {
+      compressed: res[0],
+      thumb: res[1]
+    };
+  });
+}
+
+export function compress(filename){
+  let dest = toOutput(filename, '_files');
   return new Promise(function(resolve, reject){
     new FFmpeg({
       source: filename
@@ -13,16 +27,15 @@ export function compress(filename, dest){
       reject(err);
     })
     .on('end', function(){
-      console.log('resolving videconver', dest);
       resolve(dest);
     })
     .saveToFile(dest);
   });
 };
 
-export function thumb(filename, dest){
-  console.log('thumb for:', dest);
-  console.log('thumb in:', path.dirname(dest));
+export function thumb(filename){
+  let dest = toOutput(filename, '_thumbs');
+
   return new Promise(function(resolve, reject){
     new FFmpeg(filename)
       .takeScreenshots({
@@ -31,15 +44,16 @@ export function thumb(filename, dest){
           size:`${config.thumb_width}x${config.thumb_height}`,
           filename: '%w_%h_%f'
         }, path.dirname(dest), function(err) {
-          console.log('kek');
           if(err){
             return reject(err);
           }
           resolve(dest);
       }).on('end', function(){
         let filename = `${config.thumb_width}_${config.thumb_height}_` + path.basename(dest) + '.png';
-        let dir =  path.relative(config.output, path.dirname(dest));
-        resolve(path.join(dir,filename));
+        let dir = path.dirname(dest);
+        resolve({
+          path: path.join(dir,filename)
+        });
       }).on('error', function(err){
         reject(err);
       });

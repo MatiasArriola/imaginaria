@@ -43,7 +43,7 @@ test("fetcher", (t) => {
     t.plan(2);
     t.equal(typeof fetchVideos, "function", "exists and is a function");
     fetchVideos("_files")
-      .then((files) => t.equal(files.length, 0, "there should be 0 videos"))
+      .then((files) => t.equal(files.length, 1, "there should be 1 video"))
       .catch(() => t.fail());
   });
 

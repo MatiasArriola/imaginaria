@@ -5,13 +5,22 @@ import config from '../config';
 
 import { toOutput } from '../pathHelper';
 
+export default function all(filename){
+  return Promise.all([compress(filename), thumb(filename)]).then((res) => {
+    return {
+      compressed: res[0],
+      thumb: res[1]
+    };
+  });
+}
+
 export function compress(filename){
   let stripExif = config.strip_exif;
   let dest = toOutput(filename, '_files');
   fs.ensureDirSync(path.dirname(dest));
   return easyimg.exec(
     `convert ${ stripExif ? '-strip' : '' } -interlace Plane -gaussian-blur 0.05 -quality 85% ${path.resolve(filename)} ${path.resolve(dest)}`
-  );
+  ).then(() => dest);
 }
 
 export function thumb(filename){

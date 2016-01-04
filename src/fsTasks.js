@@ -8,3 +8,7 @@ export function createFolder(path){
 export function copy(from, to){
   return promisify(fs.copy)(from, to);
 }
+
+export function clean(path){
+  return promisify(fs.remove)(path);
+}
