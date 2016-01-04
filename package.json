@@ -1,6 +1,6 @@
 {
   "name": "imaginaria",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate static sites from images and videos easily with optimizations by default.",
   "main": "dist/index.js",
   "files": [
